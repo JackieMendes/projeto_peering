@@ -1,0 +1,22 @@
+! NEIGHBORS ####################
+router bgp 28604
+!ROT-CE-01
+  neighbor {{ ipv4 }} remote-as {{ ans }}
+     ebgp-multihop 2
+     description {{ company }}-AS{{ asn }}-VIA_PTT-CE
+     update-source Vlan
+     remove-private-as
+     address-family ipv4 unicast
+        route-map PEERING-BILATERAL-IX-IN in
+        route-map PEERING-BILATERAL-IX-OUT out
+        send-community
+	    soft-reconfiguration inbound
+  neighbor {{ ipv6 }} remote-as {{ asn }}
+     ebgp-multihop 2
+     description {{ company}}-AS{{ asn }}-VIA_PTT-CE
+     update-source Vlan2336
+     remove-private-as
+     address-family ipv6 unicast
+         route-map PEERING-BILATERAL-IX-IN in
+         route-map PEERING-BILATERAL-IX-OUT out
+         soft-reconfiguration inbound

@@ -1,0 +1,26 @@
+!ROT-CM-01/02
+router bgp
+neighbor {{ ipv4 }} remote-as {{ asn }}
+neighbor {{ ipv4 }} ebgp-multihop 1
+neighbor {{ ipv4 }} description {{ comapy }}-AS{{ asn }}-VIA_PTT
+neighbor {{ ipv4 }} update-source ve 10
+neighbor {{ ipv4 }} remove-private-as
+neighbor {{ ipv4 }} soft-reconfiguration inbound
+neighbor {{ ipv6 }}  remote-as {{ asn }}
+neighbor {{ ipv6 }} ebgp-multihop 1
+neighbor {{ ipv6 }} description {{ company }}-AS{{ asn }}-VIA_PTT
+neighbor {{ ipv6 }} update-source ve 11
+neighbor {{ ipv6 }} remove-private-as
+neighbor {{ipv6 }} soft-reconfiguration inbound
+address-family ipv4 unicast
+neighbor {{ ipv4 }} route-map in PEERING-BILATERAL-IX-IN
+neighbor {{ ipv4 }} route-map out PEERING-BILATERAL-IX-OUT
+neighbor {{ ipv4 }} maximum-prefix 50
+neighbor {{ ipv4 }} send-community
+address-family ipv6 unicast
+neighbor {{ ipv6 }} activate
+neighbor {{ ipv6 }} route-map in PEERING-BILATERAL-IX-IN
+neighbor {{ ipv6 }} rroute-map out PEERING-BILATERAL-IX-OUT
+neighbor {{ cipv6 }} maximum-prefix 50
+
+{% endfor %}

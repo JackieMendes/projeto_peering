@@ -1,0 +1,26 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <table class="table table-striped table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>ASN</th>
+                <th>Local</th>
+                <th>Company</th>
+                <th>IPV4</th>
+                <th>IPV6</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for Peering in Peering %}
+                        <tr>
+                            <td>{{ peering.asn }}</td>
+                            <td>{{ peering.local }}</td>
+                            <td>{{ peering.company }}</td>
+                            <td>{{ peering.ipv4 }}</td>
+                            <td>{{ peering.ipv6 }}</td>
+
+                        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <form action="{{ url_for('criar') }}" method="post">
+        <fieldset>
+          <div class="form-group">
+            <label for="ASN">ASN</label>
+            <input type="text" id="ASN" name="ASN" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" class="form-control">
+          </div>
+          <div class="selectdiv">
+                <div>
+                    <label class="local"><b>Local</b></label>
+                    <div class="cselect">
+                        <select class="slist" id="slist">
+                            <option value="0">Selecione sua Localização</option>
+                            <option value="1">Rio de Janeiro</option>
+                            <option value="2">São Paulo</option>
+                            <option value="3">Ceara</option>
+                        </select>
+                    </div>
+                 </div>
+                <div>
+                    <label class="peeringT"><b>Peering</b></label>
+                    <div class="cselect">
+                        <select class="slist2" id="slist2">
+                            <option value="0">Selecione seu Peering</option>
+                            <option value="1">Peering Público(ATM via lx)</option>
+                        </select>
+                    </div>
+                </div>
+            </div class="selectdiv">
+          <div class="form-group">
+            <label for="IPV4">IPV4</label>
+            <input type="text" id="IPV4" name="IPV4" class="form-control">
+          </div>
+             <div class="form-group">
+            <label for="IPV6">IPV6</label>
+            <input type="text" id="IPV6" name="IPV6" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+        </fieldset>
+    </form>
+{% endblock %}
