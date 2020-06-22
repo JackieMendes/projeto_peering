@@ -11,15 +11,14 @@
             </tr>
         </thead>
         <tbody>
-        {% for Peering in Peering %}
-                        <tr>
-                            <td>{{ peering.asn }}</td>
-                            <td>{{ peering.local }}</td>
-                            <td>{{ peering.company }}</td>
-                            <td>{{ peering.ipv4 }}</td>
-                            <td>{{ peering.ipv6 }}</td>
-
-                        </tr>
+        {% for peering in peerings %}
+            <tr>
+                <td>{{ peering.asn }}</td>
+                <td>{{ peering.local }}</td>
+                <td>{{ peering.company }}</td>
+                <td>{{ peering.ipv4 }}</td>
+                <td>{{ peering.ipv6 }}</td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>

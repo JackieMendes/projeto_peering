@@ -40,7 +40,12 @@ lista = [peering1, peering2]
 
 @app.route('/')
 def index():
-    return render_template('lista.html', titulo='Peering', jogos=lista)
+    return render_template('lista.html', titulo='Peering', peerings=lista)
+
+# @app.route("/")
+# def template_test():
+#     return render_template('template.html', my_string="Wheeeee!", my_list=[0,1,2,3,4,5])
+
 
 @app.route('/novo')
 def novo():
