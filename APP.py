@@ -42,11 +42,6 @@ lista = [peering1, peering2]
 def index():
     return render_template('lista.html', titulo='Peering', peerings=lista)
 
-# @app.route("/")
-# def template_test():
-#     return render_template('template.html', my_string="Wheeeee!", my_list=[0,1,2,3,4,5])
-
-
 @app.route('/novo')
 def novo():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
@@ -55,24 +50,34 @@ def novo():
 
 @app.route('/criar', methods=['POST',])
 def criar():
-    details = request.form
-    ASN = details['ASN']
-    local = details['local']
-    company = details['company']
-    IPV4 = details['IPV4']
-    IPV6 = details['IPV6']
 
-    file_loader = FileSystemLoader('templates')
-    env = Environment(loader=file_loader)
-    if lugar == 'Rio de janeiro':
-        template = env.get_template('RJ.j2')
-    elif lugar == 'São Paulo':
-        template = env.get_template('SP.j2')
-    elif lugar == 'Ceara':
-        template = env.get_template('CE.j2')
+    asn = request.form['asn']
+    local = request.form['local']
+    company = request.form['company']
+    ipv4 = request.form['ipv4']
+    ipv6 = request.form['ipv6']
+    peering = Peering(asn, local, company, ipv4, ipv6)
+    lista.append(peering)
 
-    print(templates.render(ASN='ASN', local='local', company='company', ipv4='IPV4', ipv6='IPV6'))
-    pdb.set_trace()
+    return redirect(url_for('index'))
+
+    # details = request.form
+    # ASN = details['ASN']
+    # local = details['local']
+    # company = details['company']
+    # IPV4 = details['IPV4']
+    # IPV6 = details['IPV6']
+    # file_loader = FileSystemLoader('templates')
+    # env = Environment(loader=file_loader)
+    # if lugar == 'Rio de janeiro':
+    #     template = env.get_template('RJ.j2')
+    # elif lugar == 'São Paulo':
+    #     template = env.get_template('SP.j2')
+    # elif lugar == 'Ceara':
+    #     template = env.get_template('CE.j2')
+    # # print(templates.render(ASN='ASN', local='local', company='company', ipv4='IPV4', ipv6='IPV6'))
+    # # pdb.set_trace()
+    # return redirect(url_for('index'))
 
 @app.route('/login')
 def login():
