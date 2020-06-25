@@ -1,13 +1,14 @@
+import os
 from flask import Flask, render_template, request, redirect, session, flash, url_for
 from flask_mysqldb import MySQL
 from jinja2 import Environment, FileSystemLoader, Template
 import pdb
 app = Flask(__name__)
 app.secret_key = 'peering'
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Luar2200'
-app.config['MYSQL_DB'] = 'peering'
+# app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = 'Luar2200'
+# app.config['MYSQL_DB'] = 'peering'
 mysql = MySQL(app)
 
 class Peering:
@@ -26,9 +27,9 @@ class Usuario:
 
 
 usuario1 = Usuario('jacqueline', 'jacqueline Ribeiro', 'senha')
-usuario2 = Usuario('gabriel', 'rickson', 'seha')
-usuario3 = Usuario('maycon', 'rickson', 'seha')
-usuario4 = Usuario('rickson', 'frickson', 'seha')
+usuario2 = Usuario('gabriel', 'gabriel', 'senha')
+usuario3 = Usuario('maycon', 'rickson', 'senha')
+usuario4 = Usuario('rickson', 'rickson', 'senha')
 
 usuarios = {usuario1.id: usuario1,
             usuario2.id: usuario2,
@@ -46,20 +47,28 @@ def index():
 def novo():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return redirect(url_for('login', proxima=url_for('novo')))
-    return render_template('novo.html', titulo='Novo Peering')
-
-@app.route('/criar', methods=['POST',])
-def criar():
-
+    return render_template('novo.html', titulo='NOVO PEERING')
     asn = request.form['asn']
     local = request.form['local']
     company = request.form['company']
     ipv4 = request.form['ipv4']
     ipv6 = request.form['ipv6']
-    peering = Peering(asn, local, company, ipv4, ipv6)
-    lista.append(peering)
 
-    return redirect(url_for('index'))
+@app.route('/criar', methods=['GET', 'POST' ])
+def criar():
+    return render_template('teste.html', asn='asn', local='local', company='company', ipv4='ipv4', ipv6='ipv6')
+
+    # peering = Peering(asn, local, company, ipv4, ipv6)
+    # lista.append(peering)
+    # return redirect(url_for('login', proxima=url_for('novo')))
+    # if local == 'Rio de janeiro':
+    #     return render_template('RJ.j2', asn= 'asn', company='company',ipv4='ipv4', ipv6='ipv6')
+    # elif local == 'São Paulo':
+    #     return render_template('Sp.j2', asn= 'asn', company='company',ipv4='ipv4', ipv6='ipv6')
+    # elif local == 'Ceara':
+    #     return render_template('CE.j2', asn= 'asn', company='company',ipv4='ipv4', ipv6='ipv6')
+    # else:
+    # return redirect(url_for('index'))
 
     # details = request.form
     # ASN = details['ASN']
@@ -101,7 +110,7 @@ def autenticar():
 def logout():
     session['usuario_logado'] = None
     flash('Nenhum usuário logado!')
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
 
 
 

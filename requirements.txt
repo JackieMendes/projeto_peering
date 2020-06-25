@@ -4,4 +4,5 @@ gunicorn==19.9.0
 requests==2.22.0
 python-dotenv==0.10.3
 flask_mysqldb==0.2.0
-jinja2=== 1.1.1
+Jinja2== 2.10.1
+Flask-WTF==0.14.3

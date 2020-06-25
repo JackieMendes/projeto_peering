@@ -1,9 +1,7 @@
 {% extends "template.html" %}
 {% block conteudo %}
 
-<html>
-
-
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="hstyle.css">
@@ -21,10 +19,11 @@
         <section class="peering-form container-fluid">
             <div class="row justify-content-center">
                 <div class="col-6 align-self-center">
-                    <form name="peering-form" method="POST" action=" {{ url_for('apps.send_contact') }} ">
+                    <form name="peering-form" method="POST" action=" {{ url_for('criar') }} ">
+                    <form method="POST" action="{{ url_for('criar') }}">
                         <div class="Block-Form">
                             <div class="Info-Fields-Form">
-                                <p class="BodyForm">ASN:</p>
+                                <p class="BodyForm">ASN:</p>s
                                 <p id="block-asn">
                                     <input id="asn" class="Form-Inputs" type="text" name="asn" required>
                                 </p>
