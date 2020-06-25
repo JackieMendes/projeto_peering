@@ -75,12 +75,13 @@ def criar():
       template = env.get_template("CE.j2")
       output_from_parsed_template = template.render(asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
 
-    # print (output_from_parsed_template)
-      # with open("sw.html", "wb") as fh:
-        # fh.write(str(output_from_parsed_template))
+    print (output_from_parsed_template)
+    content = str.encode(output_from_parsed_template)
+    with open("sw.html", "wb") as fh:
+      fh.write(content)
+      fh.close()
 
     return render_template('lista.html', titulo='Peering', peerings=lista)
-
 
 @app.route('/login')
 def login():
