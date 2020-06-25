@@ -49,6 +49,9 @@ def novo():
         return redirect(url_for('login', proxima=url_for('novo')))
     return render_template('novo.html', titulo='NOVO PEERING')
 
+@app.route('/criar', methods=['GET', 'POST'])
+def criar():
+
     details = request.form
     asn = details['asn']
     local = details['local']
@@ -56,22 +59,17 @@ def novo():
     ipv4 = details['ipv4']
     ipv6 = details['ipv6']
 
-@app.route('/criar', methods=['GET', 'POST'])
-def criar():
-    return render_template('teste.html', asn=asn, local=local, company=company, ipv4=ipv4, ipv6=ipv6)
-
     # peering = Peering(asn, local, company, ipv4, ipv6)
     # lista.append(peering)
     # return redirect(url_for('login', proxima=url_for('novo')))
     # if local == 'Rio de janeiro':
-    #     return render_template('RJ.j2', asn= 'asn', company='company',ipv4='ipv4', ipv6='ipv6')
+    #     return render_template('RJ.j2', asn=asn, company=company,ipv4=ipv4, ipv6=ipv6)
     # elif local == 'São Paulo':
-    #     return render_template('Sp.j2', asn= 'asn', company='company',ipv4='ipv4', ipv6='ipv6')
+    #     return render_template('Sp.j2', asn=asn, company=company,ipv4=ipv4, ipv6=ipv6)
     # elif local == 'Ceara':
-    #     return render_template('CE.j2', asn= 'asn', company='company',ipv4='ipv4', ipv6='ipv6')
+    #     return render_template('CE.j2', asn=asn, company=company,ipv4=ipv4, ipv6=ipv6)
     # else:
     # return redirect(url_for('index'))
-
 
     # file_loader = FileSystemLoader('templates')
     # env = Environment(loader=file_loader)
@@ -109,9 +107,3 @@ def logout():
     session['usuario_logado'] = None
     flash('Nenhum usuário logado!')
     return redirect(url_for('login'))
-
-
-
-
-
-
