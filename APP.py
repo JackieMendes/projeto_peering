@@ -43,20 +43,22 @@ lista = [peering1, peering2]
 def index():
     return render_template('lista.html', titulo='Peering', peerings=lista)
 
-@app.route('/novo')
+@app.route('/novo', methods=['GET', 'POST'])
 def novo():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return redirect(url_for('login', proxima=url_for('novo')))
     return render_template('novo.html', titulo='NOVO PEERING')
-    asn = request.form['asn']
-    local = request.form['local']
-    company = request.form['company']
-    ipv4 = request.form['ipv4']
-    ipv6 = request.form['ipv6']
 
-@app.route('/criar', methods=['GET', 'POST' ])
+    details = request.form
+    asn = details['asn']
+    local = details['local']
+    company = details['company']
+    ipv4 = details['ipv4']
+    ipv6 = details['ipv6']
+
+@app.route('/criar', methods=['GET', 'POST'])
 def criar():
-    return render_template('teste.html', asn='asn', local='local', company='company', ipv4='ipv4', ipv6='ipv6')
+    return render_template('teste.html', asn=asn, local=local, company=company, ipv4=ipv4, ipv6=ipv6)
 
     # peering = Peering(asn, local, company, ipv4, ipv6)
     # lista.append(peering)
@@ -70,12 +72,7 @@ def criar():
     # else:
     # return redirect(url_for('index'))
 
-    # details = request.form
-    # ASN = details['ASN']
-    # local = details['local']
-    # company = details['company']
-    # IPV4 = details['IPV4']
-    # IPV6 = details['IPV6']
+
     # file_loader = FileSystemLoader('templates')
     # env = Environment(loader=file_loader)
     # if lugar == 'Rio de janeiro':
@@ -87,6 +84,7 @@ def criar():
     # # print(templates.render(ASN='ASN', local='local', company='company', ipv4='IPV4', ipv6='IPV6'))
     # # pdb.set_trace()
     # return redirect(url_for('index'))
+
 
 @app.route('/login')
 def login():
