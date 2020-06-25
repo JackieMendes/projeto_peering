@@ -59,27 +59,30 @@ def criar():
     ipv4 = details['ipv4']
     ipv6 = details['ipv6']
 
-    # peering = Peering(asn, local, company, ipv4, ipv6)
-    # lista.append(peering)
+    peering = Peering(asn, local, company, ipv4, ipv6)
+    lista.append(peering)
+    return render_template('lista.html', titulo='Peering', peerings=lista)
+
     # return redirect(url_for('login', proxima=url_for('novo')))
+    
     # if local == 'Rio de janeiro':
-    #     return render_template('RJ.j2', asn=asn, company=company,ipv4=ipv4, ipv6=ipv6)
+        # return render_template('RJ.j2', asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
     # elif local == 'São Paulo':
-    #     return render_template('Sp.j2', asn=asn, company=company,ipv4=ipv4, ipv6=ipv6)
+        # return render_template('Sp.j2', asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
     # elif local == 'Ceara':
-    #     return render_template('CE.j2', asn=asn, company=company,ipv4=ipv4, ipv6=ipv6)
+        # return render_template('CE.j2', asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
     # else:
-    # return redirect(url_for('index'))
+        # return redirect(url_for('index'))
 
     # file_loader = FileSystemLoader('templates')
     # env = Environment(loader=file_loader)
     # if lugar == 'Rio de janeiro':
-    #     template = env.get_template('RJ.j2')
+        # template = env.get_template('RJ.j2')
     # elif lugar == 'São Paulo':
-    #     template = env.get_template('SP.j2')
+        # template = env.get_template('SP.j2')
     # elif lugar == 'Ceara':
-    #     template = env.get_template('CE.j2')
-    # # print(templates.render(ASN='ASN', local='local', company='company', ipv4='IPV4', ipv6='IPV6'))
+        # template = env.get_template('CE.j2')
+    # render_template(ASN=asn, local=local, company=company, ipv4=ipv4, ipv6=ipv6)
     # # pdb.set_trace()
     # return redirect(url_for('index'))
 
