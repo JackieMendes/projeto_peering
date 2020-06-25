@@ -11,7 +11,7 @@ neighbor {{ ipv6 }} ebgp-multihop 1
 neighbor {{ ipv6 }} description {{ company }}-AS{{ asn }}-VIA_PTT
 neighbor {{ ipv6 }} update-source ve 11
 neighbor {{ ipv6 }} remove-private-as
-neighbor {{ipv6 }} soft-reconfiguration inbound
+neighbor {{ ipv6 }} soft-reconfiguration inbound
 address-family ipv4 unicast
 neighbor {{ ipv4 }} route-map in PEERING-BILATERAL-IX-IN
 neighbor {{ ipv4 }} route-map out PEERING-BILATERAL-IX-OUT
@@ -21,6 +21,4 @@ address-family ipv6 unicast
 neighbor {{ ipv6 }} activate
 neighbor {{ ipv6 }} route-map in PEERING-BILATERAL-IX-IN
 neighbor {{ ipv6 }} rroute-map out PEERING-BILATERAL-IX-OUT
-neighbor {{ cipv6 }} maximum-prefix 50
-
-{% endfor %}
+neighbor {{ ipv6 }} maximum-prefix 50

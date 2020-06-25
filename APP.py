@@ -61,30 +61,25 @@ def criar():
 
     peering = Peering(asn, local, company, ipv4, ipv6)
     lista.append(peering)
-    return render_template('lista.html', titulo='Peering', peerings=lista)
-
-    # return redirect(url_for('login', proxima=url_for('novo')))
     
-    # if local == 'Rio de janeiro':
-        # return render_template('RJ.j2', asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
-    # elif local == 'São Paulo':
-        # return render_template('Sp.j2', asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
-    # elif local == 'Ceara':
-        # return render_template('CE.j2', asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
-    # else:
-        # return redirect(url_for('index'))
+    from jinja2 import Environment, FileSystemLoader
+    env = Environment(loader=FileSystemLoader("templates"))
+    
+    if local == 'Rio de Janeiro':
+      template = env.get_template("RJ.j2")
+      output_from_parsed_template = template.render(asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
+    elif local == 'São Paulo':
+      template = env.get_template("SP.j2")
+      output_from_parsed_template = template.render(asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
+    else:
+      template = env.get_template("CE.j2")
+      output_from_parsed_template = template.render(asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
 
-    # file_loader = FileSystemLoader('templates')
-    # env = Environment(loader=file_loader)
-    # if lugar == 'Rio de janeiro':
-        # template = env.get_template('RJ.j2')
-    # elif lugar == 'São Paulo':
-        # template = env.get_template('SP.j2')
-    # elif lugar == 'Ceara':
-        # template = env.get_template('CE.j2')
-    # render_template(ASN=asn, local=local, company=company, ipv4=ipv4, ipv6=ipv6)
-    # # pdb.set_trace()
-    # return redirect(url_for('index'))
+    # print (output_from_parsed_template)
+      # with open("sw.html", "wb") as fh:
+        # fh.write(str(output_from_parsed_template))
+
+    return render_template('lista.html', titulo='Peering', peerings=lista)
 
 
 @app.route('/login')
