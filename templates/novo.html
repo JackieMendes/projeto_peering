@@ -1,50 +1,50 @@
 {% extends "template.html" %}
 {% block conteudo %}
-        <form method="POST" action="{{ url_for('criar') }}" >
-        <fieldset>
-          <label class="titulo"><b>Formulario de Entrada</b></label>
-          <div class="form-group">
-            <label for="asn">ASN</label>
-            <input type="text" id="asn" name="asn" class="form-control">
+  <form method="POST" action="{{ url_for('criar') }}" >
+    <fieldset>
+      <label class="titulo"><b>Formulario de Entrada</b></label>
+      <div class="form-group">
+        <label for="asn">ASN</label>
+        <input type="text" id="asn" name="asn" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="company">empresa</label>
+        <input type="text" id="company" name="company" class="form-control">
+      </div>
+      <div class="selectdiv">
+        <div>
+            <label class="local"><b>Cidade</b></label>
+            <div class="cselect">
+              <select class="local" id="local" name="local">
+                <option value="none">Selecione sua Localização</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Ceara">Ceara</option>
+              </select>
+            </div>
+         </div>
+        <div>
+          <label class="peeringT"><b>Peering</b></label>
+          <div class="cselect">
+              <select class="tipo" id="tipo" name="tipo">
+                <option value="none">Selecione seu Peering</option>
+                <option value="Peering Público(ATM via lx)">Peering Público(ATM via lx)</option>
+              </select>
           </div>
-          <div class="form-group">
-            <label for="company">empresa</label>
-            <input type="text" id="company" name="company" class="form-control">
-          </div>
-          <div class="selectdiv">
-                <div>
-                    <label class="local"><b>Cidade</b></label>
-                    <div class="cselect">
-                        <select class="local" id="local" name="local">
-                            <option value="0">Selecione sua Localização</option>
-                        s    <option value="1">Rio de Janeiro</option>
-                            <option value="2">São Paulo</option>
-                            <option value="3">Ceara</option>
-                        </select>
-                    </div>
-                 </div>
-                <div>
-                    <label class="peeringT"><b>Peering</b></label>
-                    <div class="cselect">
-                        <select class="tipo" id="tipo" name="tipo">
-                            <option value="0">Selecione seu Peering</option>
-                            <option value="1">Peering Público(ATM via lx)</option>
-                        </select>
-                    </div>
-                </div>
-            </div class="selectdiv">
-          <div class="form-group">
-            <label for="ipv4">IPV4</label>
-            <input type="text" id="ipv4" name="ipv4" class="form-control">
-          </div>
-             <div class="form-group">
-            <label for="ipv6">IPV6</label>
-            <input type="text" id="ipv6" name="ipv6" class="form-control">
-          </div>
-          <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
-        </fieldset>
-    </form>
+        </div>
+        </div class="selectdiv">
+      <div class="form-group">
+        <label for="ipv4">IPV4</label>
+        <input type="text" id="ipv4" name="ipv4" class="form-control">
+      </div>
+         <div class="form-group">
+        <label for="ipv6">IPV6</label>
+        <input type="text" id="ipv6" name="ipv6" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+  </form>
 
-        <a class="btn btn-primary" href="/novo" role="button">Novo </a>
-        <a class="btn btn-primary" href="/logout" role="button">Logout </a>
+    <a class="btn btn-primary" href="/novo" role="button">Novo </a>
+    <a class="btn btn-primary" href="/logout" role="button">Logout </a>
 {% endblock %}
