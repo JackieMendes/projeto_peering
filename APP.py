@@ -5,11 +5,6 @@ from jinja2 import Environment, FileSystemLoader, Template
 import pdb
 app = Flask(__name__)
 app.secret_key = 'peering'
-# app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = 'Luar2200'
-# app.config['MYSQL_DB'] = 'peering'
-mysql = MySQL(app)
 
 class Peering:
     def __init__(self, asn, local, company, ipv4, ipv6):
@@ -35,8 +30,8 @@ usuarios = {usuario1.id: usuario1,
             usuario2.id: usuario2,
             usuario3.id: usuario3}
 
-peering1 = Peering('10', 'RJ', 'net', '172.0.0.0', '2001::1233')
-peering2 = Peering('10', 'SP', 'claro', '172.0.2.0', '2001::1234')
+peering1 = Peering('10', 'Rio Janeiro', 'net', '172.0.0.0', '2001::1233')
+peering2 = Peering('10', 'São Paulo', 'claro', '172.0.2.0', '2001::1234')
 lista = [peering1, peering2]
 
 @app.route('/')
@@ -74,12 +69,14 @@ def criar():
     else:
       template = env.get_template("CE.j2")
       output_from_parsed_template = template.render(asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
-
     print (output_from_parsed_template)
     content = str.encode(output_from_parsed_template)
     with open("sw.html", "wb") as fh:
       fh.write(content)
       fh.close()
+
+      # switchremoto = 'local'
+      #  scp sw.html  nome_do_usuário@switchremoto /config/
 
     return render_template('lista.html', titulo='Peering', peerings=lista)
 

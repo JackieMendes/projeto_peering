@@ -2,7 +2,7 @@
 router bgp
 neighbor {{ ipv4 }} remote-as {{ asn }}
 neighbor {{ ipv4 }} ebgp-multihop 1
-neighbor {{ ipv4 }} description {{ comapy }}-AS{{ asn }}-VIA_PTT
+neighbor {{ ipv4 }} description {{ company }}-AS{{ asn }}-VIA_PTT
 neighbor {{ ipv4 }} update-source ve 10
 neighbor {{ ipv4 }} remove-private-as
 neighbor {{ ipv4 }} soft-reconfiguration inbound

@@ -1,22 +1,24 @@
-! NEIGHBORS ####################
-router bgp 28604
-!ROT-CE-01
-  neighbor 172.0.0.1 remote-as 
-     ebgp-multihop 2
-     description juquinha -AS 3453 - VIA_PTT-CE
-     update-source Vlan
-     remove-private-as
-     address-family ipv4 unicast
-        route-map PEERING-BILATERAL-IX-IN in
-        route-map PEERING-BILATERAL-IX-OUT out
-        send-community
-	    soft-reconfiguration inbound
-  neighbor 2222::5555 remote-as 3453
-     ebgp-multihop 2
-     description juquinha -AS 3453 -VIA_PTT-CE
-     update-source Vlan2336
-     remove-private-as
-     address-family ipv6 unicast
-         route-map PEERING-BILATERAL-IX-IN in
-         route-map PEERING-BILATERAL-IX-OUT out
-         soft-reconfiguration inbound
+!ROT-CM-01/02
+router bgp
+neighbor 172.0.0.1 remote-as 1234
+neighbor 172.0.0.1 ebgp-multihop 1
+neighbor 172.0.0.1 description -AS1234-VIA_PTT
+neighbor 172.0.0.1 update-source ve 10
+neighbor 172.0.0.1 remove-private-as
+neighbor 172.0.0.1 soft-reconfiguration inbound
+neighbor 2222::5555  remote-as 1234
+neighbor 2222::5555 ebgp-multihop 1
+neighbor 2222::5555 description juquinha-AS1234-VIA_PTT
+neighbor 2222::5555 update-source ve 11
+neighbor 2222::5555 remove-private-as
+neighbor 2222::5555 soft-reconfiguration inbound
+address-family ipv4 unicast
+neighbor 172.0.0.1 route-map in PEERING-BILATERAL-IX-IN
+neighbor 172.0.0.1 route-map out PEERING-BILATERAL-IX-OUT
+neighbor 172.0.0.1 maximum-prefix 50
+neighbor 172.0.0.1 send-community
+address-family ipv6 unicast
+neighbor 2222::5555 activate
+neighbor 2222::5555 route-map in PEERING-BILATERAL-IX-IN
+neighbor 2222::5555 rroute-map out PEERING-BILATERAL-IX-OUT
+neighbor 2222::5555 maximum-prefix 50

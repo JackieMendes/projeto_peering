@@ -8,16 +8,16 @@ set protocols bgp group {{ company }} import PEERING-BILATERAL-IX-IN
 set protocols bgp group {{ company }} peer-as {{ asn }}
 set protocols bgp group {{ company }} multipath
 set protocols bgp group {{ company }} neighbor {{ ipv4 }}
-set protocols bgp group {{ company }} neighbor {{ ipv4 }} description "{{ campany }} IPv4 via PTT_SP"
-set protocols bgp group {{ company }} neighbor {{ ipv4 }} local-address IPV4LOCAL
-set protocols bgp group {{ company }} V6 type external
-set protocols bgp group {{ company }} V6 remove-private all
-set protocols bgp group {{ company }} V6 family inet6 unicast
-set protocols bgp group {{ company }} V6 family inet6 unicast accepted-prefix-limit maximum 50
-set protocols bgp group {{ company }} V6 export {{ route_map }}-OUT
-set protocols bgp group {{ company }} V6 import {{ route_map }}-IN
-set protocols bgp group {{ company }} V6 peer-as {{ asn}}
-set protocols bgp group {{ company }} V6 multipath
-set protocols bgp group {{ company }} V6 neighbor {{ ipv6 }}
-set protocols bgp group {{ company }} V6 neighbor {{ ipv6 }} description "{{ campany }} IPv6 via PTT_SP"
-set protocols bgp group {{ company }} V6 neighbor {{ ipv6 }} local-address IPV6LOCAL
+set protocols bgp group {{ company }} neighbor {{ ipv4 }} description "{{ company }} IPv4 via PTT_SP"
+set protocols bgp group {{ company }} neighbor {{ ipv4 }} local-address 172.0.0.5
+set protocols bgp group {{ company }}-V6 type external
+set protocols bgp group {{ company }}-V6 remove-private all
+set protocols bgp group {{ company }}-V6 family inet6 unicast
+set protocols bgp group {{ company }}-V6 family inet6 unicast accepted-prefix-limit maximum 50
+set protocols bgp group {{ company }}-V6 export PEERING-BILATERAL-IX-OUT
+set protocols bgp group {{ company }}-V6 import PEERING-BILATERAL-IX-IN
+set protocols bgp group {{ company }}-V6 peer-as {{ asn}}
+set protocols bgp group {{ company }}-V6 multipath
+set protocols bgp group {{ company }}-V6 neighbor {{ ipv6 }}
+set protocols bgp group {{ company }}-V6 neighbor {{ ipv6 }} description "{{ company }} IPv6 via PTT_SP"
+set protocols bgp group {{ company }}-V6 neighbor {{ ipv6 }} local-address 2222::5000
