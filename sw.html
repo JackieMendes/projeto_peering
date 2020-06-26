@@ -1,0 +1,22 @@
+! NEIGHBORS ####################
+router bgp 28604
+!ROT-CE-01
+  neighbor 172.0.0.1 remote-as 
+     ebgp-multihop 2
+     description juquinha -AS 3453 - VIA_PTT-CE
+     update-source Vlan
+     remove-private-as
+     address-family ipv4 unicast
+        route-map PEERING-BILATERAL-IX-IN in
+        route-map PEERING-BILATERAL-IX-OUT out
+        send-community
+	    soft-reconfiguration inbound
+  neighbor 2222::5555 remote-as 3453
+     ebgp-multihop 2
+     description juquinha -AS 3453 -VIA_PTT-CE
+     update-source Vlan2336
+     remove-private-as
+     address-family ipv6 unicast
+         route-map PEERING-BILATERAL-IX-IN in
+         route-map PEERING-BILATERAL-IX-OUT out
+         soft-reconfiguration inbound
