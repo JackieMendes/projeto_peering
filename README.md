@@ -8,4 +8,3 @@ comunicação com  o Switch que devera receber o arquivio de configuraçao.
 <br>
 
 
-s
