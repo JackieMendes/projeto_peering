@@ -2,13 +2,13 @@
 router bgp
 neighbor 172.0.0.1 remote-as 1234
 neighbor 172.0.0.1 ebgp-multihop 1
-neighbor 172.0.0.1 description -AS1234-VIA_PTT
+neighbor 172.0.0.1 description pet-AS1234-VIA_PTT
 neighbor 172.0.0.1 update-source ve 10
 neighbor 172.0.0.1 remove-private-as
 neighbor 172.0.0.1 soft-reconfiguration inbound
 neighbor 2222::5555  remote-as 1234
 neighbor 2222::5555 ebgp-multihop 1
-neighbor 2222::5555 description juquinha-AS1234-VIA_PTT
+neighbor 2222::5555 description pet-AS1234-VIA_PTT
 neighbor 2222::5555 update-source ve 11
 neighbor 2222::5555 remove-private-as
 neighbor 2222::5555 soft-reconfiguration inbound
