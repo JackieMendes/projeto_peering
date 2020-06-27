@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, session, flash, url
 from flask_mysqldb import MySQL
 from jinja2 import Environment, FileSystemLoader, Template
 import pdb
+# import scp
 app = Flask(__name__)
 app.secret_key = 'peering'
 
@@ -71,12 +72,12 @@ def criar():
       output_from_parsed_template = template.render(asn=asn, company=company, ipv4=ipv4, ipv6=ipv6)
     print (output_from_parsed_template)
     content = str.encode(output_from_parsed_template)
-    with open("sw.html", "wb") as fh:
+    with open("sw.txt", "wb") as fh:
       fh.write(content)
       fh.close()
 
-      # switchremoto = 'local'
-      #  scp sw.html  nome_do_usuário@switchremoto /config/
+      # client = scp.Client(Host=host, user=user, password=password)
+      # client.transfer('/etc/local/filename', '/etc/remote/filename')
 
     return render_template('lista.html', titulo='Peering', peerings=lista)
 
