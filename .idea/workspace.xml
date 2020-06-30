@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbfa3644-daa1-4fa0-8bee-71c802b911a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/APP.py" beforeDir="false" afterPath="$PROJECT_DIR$/APP.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sw.html" beforeDir="false" afterPath="$PROJECT_DIR$/sw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sw.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CE.j2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CE.j2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/RJ.j2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/RJ.j2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/novo.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/novo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

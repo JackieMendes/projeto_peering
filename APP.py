@@ -31,8 +31,8 @@ usuarios = {usuario1.id: usuario1,
             usuario2.id: usuario2,
             usuario3.id: usuario3}
 
-peering1 = Peering('10', 'Rio Janeiro', 'net', '172.0.0.0', '2001::1233')
-peering2 = Peering('10', 'São Paulo', 'claro', '172.0.2.0', '2001::1234')
+peering1 = Peering('28573', 'Rio Janeiro', 'net', '45.6.52.149', '2001:12f8:0:2::149')
+peering2 = Peering('4230', 'São Paulo', 'claro', '187.16.222.18', '2001:12f8::222:18')
 lista = [peering1, peering2]
 
 @app.route('/')
@@ -43,7 +43,7 @@ def index():
 def novo():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return redirect(url_for('login', proxima=url_for('novo')))
-    return render_template('novo.html', titulo='NOVO PEERING')
+    return render_template('novo.html', titulo='Web-Peering')
 
 @app.route('/criar', methods=['GET', 'POST'])
 def criar():
